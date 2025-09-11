@@ -1,7 +1,6 @@
-votre-dossier/
+Jn-jbeatz_Cartevisite/
 ├── index.html
 ├── style.css
 ├── script.js
 ├── card_front.JPG
-├── card_back.JPG
-└── qrcode.png
+└── card_back.JPG
