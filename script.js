@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Générer le QR code
     function generateQRCode() {
         const canvas = document.getElementById('qrcode-canvas');
-        // Remplacez cette URL par l'URL de votre site GitHub Pages
-        const websiteURL = 'https://votrenomutilisateur.github.io/nom-du-depot/';
+        // Votre URL GitHub Pages
+        const websiteURL = 'https://jimcomputerservices.github.io/Jn-jbeatz_Cartevisite/';
         
         QRCode.toCanvas(canvas, websiteURL, {
             width: 80,
