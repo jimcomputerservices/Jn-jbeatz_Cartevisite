@@ -1,0 +1,7 @@
+votre-dossier/
+├── index.html
+├── style.css
+├── script.js
+├── card_front.JPG
+├── card_back.JPG
+└── qrcode.png
