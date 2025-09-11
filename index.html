@@ -5,246 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jn'J Beatz - Carte de Visite Interactive</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 900px;
-            text-align: center;
-            position: relative;
-        }
-        
-        h1 {
-            color: white;
-            margin-bottom: 30px;
-            font-weight: 600;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .card-container {
-            perspective: 1000px;
-            width: 350px;
-            height: 200px;
-            margin: 0 auto 40px;
-            cursor: pointer;
-        }
-        
-        .card {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.8s;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-            border-radius: 15px;
-        }
-        
-        .card.flipped {
-            transform: rotateY(180deg);
-        }
-        
-        .card-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow: hidden;
-        }
-        
-        .card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            border-radius: 15px;
-        }
-        
-        .bracelet {
-            width: 320px;
-            height: 100px;
-            background: linear-gradient(to right, #c9b0a6, #a58d85);
-            margin: 0 auto 30px;
-            border-radius: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            position: relative;
-            animation: pulse 2s infinite;
-        }
-        
-        .bracelet:before, .bracelet:after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background-color: #d9c7bd;
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .bracelet:before {
-            left: 15px;
-        }
-        
-        .bracelet:after {
-            right: 15px;
-        }
-        
-        .qr-code {
-            width: 80px;
-            height: 80px;
-            background-color: white;
-            padding: 8px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        
-        .qr-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .scan-text {
-            color: white;
-            margin-top: 15px;
-            font-weight: 500;
-            font-size: 18px;
-        }
-        
-        .social-section {
-            margin-top: 30px;
-        }
-        
-        .social-text {
-            color: white;
-            margin-bottom: 15px;
-            font-style: italic;
-            text-align: center;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .social-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 20px;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-        
-        .social-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-        
-        .social-label {
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-        
-        .social-btn:hover .social-label {
-            opacity: 1;
-        }
-        
-        .whatsapp { background: #25D366; }
-        .instagram { background: #E1306C; }
-        .twitter { background: #1DA1F2; }
-        .facebook { background: #4267B2; }
-        .tiktok { background: #000000; }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @media (max-width: 600px) {
-            .card-container {
-                width: 300px;
-                height: 180px;
-            }
-            
-            .bracelet {
-                width: 280px;
-                height: 90px;
-            }
-            
-            .qr-code {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .social-links {
-                gap: 10px;
-            }
-            
-            .social-text {
-                font-size: 0.9em;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -254,19 +15,19 @@
             <div class="card" id="card">
                 <div class="card-face card-front">
                     <!-- Recto de la carte -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMkMzRTUwO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM0QTY5QkQ7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxyZWN0IHdpZHRoPSIzNTAiIGhlaWdodD0iMjAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIgLz4KICAgIDx0ZXh0IHg9IjE3NSIgeT0iNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIj5KbidKIEJlYXQ8L3RleHQ+CiAgICA8dGV4dCB4PSIxNzUiIHk9IjkwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0leHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIj5NYWtlcjwvdGV4dD4KICAgIDx0ZXh0IHg9IjE3NSIgeT0iMTYwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj53d3cuYmF0cm9uaXhncm91cC5jb208L3RleHQ+Cjwvc3ZnPg==" alt="Recto de la carte de visite Jn'J Beatz" class="card-img" id="card-front-img">
+                    <img src="card_front.JPG" alt="Recto de la carte de visite Jn'J Beatz" class="card-img" id="card-front-img">
                 </div>
                 <div class="card-face card-back">
                     <!-- Verso de la carte -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNEE2OUJEO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMyQzNFNTA7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxyZWN0IHdpZHRoPSIzNTAiIGhlaWdodD0iMjAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIgLz4KICAgIDx0ZXh0IHg9IjE3NSIgeT0iMzAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIj5KbidKIEJlYXQgTWFrZXI8L3RleHQ+CiAgICA8dGV4dCB4PSIxNzUiIHk9IjUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5KbidKIEJlYXR6IE1yIEd3b2xvPC90ZXh0PgogICAgPHRleHQgeD0iMTc1IiB5PSI3MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QXJpc3QgJiBNdXNpYyBQcm9kdWNlcjwvdGV4dD4KICAgIDx0ZXh0IHg9IjE3NSIgeT0iOTAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPis1MDkgMzc1MS0yNDE0PC90ZXh0PgogICAgPHRleHQgeD0iMTc1IiB5PSIxMTAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9y=" alt="Verso de la carte de visite Jn'J Beatz" class="card-img" id="card-back-img">
+                    <img src="card_back.JPG" alt="Verso de la carte de visite Jn'J Beatz" class="card-img" id="card-back-img">
                 </div>
             </div>
         </div>
         
         <div class="bracelet" aria-label="Bracelet avec QR code interactif">
             <div class="qr-code">
-                <!-- QR Code intégré - plus grand et plus lisible -->
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSJub25lIi8+CjxwYXRoIGQ9Ik00IDQuNUg4VjguNUg0VjQuNVpNNC45NSAxNi40NUg3Ljk1VjE5LjQ1SDQuOTVWMTYuNDVaTTQuNSA5LjVIOFYxMy41SDRWOS41Wk05LjUgNC41SDEzLjVWOC41SDkuNVY0LjVaTTkuNSA5LjVIMTMuNVYxMy41SDkuNVY5LjVaTTkuNSAxNC41SDEzLjVWMTguNUg5LjVWMTQuNVpNMTUgNC41SDE5VjguNUgxNVY0LjVaTTE1IDkuNUgxOVYxMy41SDE1VjkuNVpNMTUgMTQuNUgxOVYxOC41SDE1VjE0LjVaIiBmaWxsPSIjMDAwMDAwIi8+Cjwvc3ZnPg==" alt="QR Code pour Jn'J Beatz" class="qr-img">
+                <!-- QR Code -->
+                <img src="qrcode.png" alt="QR Code pour Jn'J Beatz" class="qr-img">
             </div>
         </div>
         
@@ -299,41 +60,6 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const card = document.getElementById('card');
-            const cardContainer = document.getElementById('card-container');
-            
-            // Animation de la carte au chargement
-            setTimeout(() => {
-                card.classList.add('flipped');
-            }, 1000);
-            
-            // Retournement de la carte au clic
-            cardContainer.addEventListener('click', function() {
-                card.classList.toggle('flipped');
-            });
-            
-            // Retournement de la carte avec la touche espace
-            cardContainer.addEventListener('keydown', function(e) {
-                if (e.code === 'Space' || e.key === 'Enter') {
-                    e.preventDefault();
-                    card.classList.toggle('flipped');
-                }
-            });
-            
-            // Animation automatique toutes les 8 secondes
-            setInterval(() => {
-                card.classList.toggle('flipped');
-            }, 8000);
-            
-            // Ouvrir les liens sociaux dans un nouvel onglet
-            const socialLinks = document.querySelectorAll('.social-links a');
-            socialLinks.forEach(link => {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
