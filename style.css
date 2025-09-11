@@ -236,3 +236,7 @@ h1 {
         font-size: 0.9em;
     }
 }
+#qrcode-canvas {
+    width: 100%;
+    height: 100%;
+}
