@@ -19,6 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (error) console.error(error);
             console.log('QR code generated successfully!');
         });
+        const cardContainer = document.getElementById('card-container');
+const card = document.getElementById('card');
+
+cardContainer.addEventListener('click', () => {
+    card.classList.toggle('flipped');
+});
     }
     
     // Animation de la carte au chargement
