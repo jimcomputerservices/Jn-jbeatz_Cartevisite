@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
+    # 1. Supprimer tous les fichiers et dossiers sauf README.md
+find . -maxdepth 1 ! -name '.' ! -name 'README.md' -exec rm -rf {} +
+
+# 2. Réinitialiser le contenu de README.md
+echo "# Carte de visite numérique Jn-jbeatz" > README.md
+
+# 3. Ajouter toutes les modifications
+git add -A
+
+# 4. Faire un commit
+git commit -m "Restaurer le projet à son état initial (premier commit)"
+
+# 5. Envoyer sur GitHub
+git push
 <<img src="card_front.JPG" alt="Recto de la carte de visite Jn'J Beatz" class="card-img" id="card-front-img">
 <img src="card_back.JPG" alt="Verso de la carte de visite Jn'J Beatz" class="card-img" id="card-back-img">
     <meta charset="UTF-8">
